@@ -14,7 +14,15 @@ include_once ('inc/header.php');
 
 <?php
 include_once ('system/libs/Main.php');
-$main = new Main();
+include_once ('system/libs/DController.php');
+
+$url = isset($_GET['url']) ? $_GET['url']:NULL;
+$url = rtrim($url,'/');
+$url = explode('/',$url);
+
+include_once ('app/controllers/'.$url[0].'.php');
+
+$ctrler = new $url[0]();
 
 ?>
 
